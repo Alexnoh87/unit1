@@ -7,7 +7,7 @@ import ru.netology.service.CashbackHackService;
 public class CashbackHackServiceTest {
 
     @Test
-    public void test1() {
+    public void shouldHowMuchBuyIfPurchaseLess1000() {
         CashbackHackService cashbackHackService = new CashbackHackService();
 
         int amount = 900;
@@ -19,10 +19,34 @@ public class CashbackHackServiceTest {
     }
 
     @Test
-    public void test2() {
+    public void shouldHowMuchBuyIfPurchase0() {
+        CashbackHackService cashbackHackService = new CashbackHackService();
+
+        int amount = 0;
+
+        int actual = cashbackHackService.remain(amount);
+        int expected = 1_000;
+
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void shouldHowMuchBuyIfPurchase1000() {
         CashbackHackService cashbackHackService = new CashbackHackService();
 
         int amount = 1_000;
+
+        int actual = cashbackHackService.remain(amount);
+        int expected = 0;
+
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void shouldHowMuchBuyIfPurchaseMore1000() {
+        CashbackHackService cashbackHackService = new CashbackHackService();
+
+        int amount = 1_300;
 
         int actual = cashbackHackService.remain(amount);
         int expected = 0;
